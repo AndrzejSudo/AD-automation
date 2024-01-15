@@ -8,8 +8,14 @@
     ],
     "users": [
         {
-            "name": "Matthew",
-            "surname": "Perry",
+            "name": "Matthew Perry",
+            "password": "Qwerty123",
+            "groups": [
+                "Sales"
+            ]
+        },
+        {
+            "name": "Steve Stone",
             "password": "Qwerty123",
             "groups": [
                 "Sales"
