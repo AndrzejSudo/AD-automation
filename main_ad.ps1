@@ -3,7 +3,7 @@ param( [Parameter(Mandatory=$true)] $JSONFile )
 function CreateADGroup(){
     param( [Parameter(Mandatory=$true)] $groupObject )
     
-    $name = $groupObject.$name
+    $name = $groupObject.name
     New-ADGroup -name $name -GroupScope Global
 }
 
@@ -18,9 +18,8 @@ function CreateADUser(){
     $samAccountName = $username
     $principalname = $username
 
-    New-ADUser -Name "$name" -GivenName $firstname -Surname $lastname -SamAccountName 
-    $SamAccountName -UserPrincipalName $principalname@$Global:Domain -AccountPassword 
-    (ConverTo-SecureString $password -AsPlainText -Force) -PassThru | Enable-ADAccount
+    New-ADUser -Name "$name" -GivenName $firstname -Surname $lastname -SamAccountName $SamAccountName 
+    -UserPrincipalName $principalname@$Global:Domain -AccountPassword (ConvertTo-SecureString $password -AsPlainText -Force) -PassThru | Enable-ADAccount
 
     foreach($group in $userObject.groups) {
         
@@ -36,7 +35,7 @@ function CreateADUser(){
 
 $json = ( Get-Content $JSONFile | ConvertFrom-JSON)
 
-$Global:Domain = $json.$Global:Domain
+$Global:Domain = $json.domain
 
 foreach ( $group in $json.groups ){
     CreateADGroup $group
