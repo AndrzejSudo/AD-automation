@@ -1,0 +1,19 @@
+{
+    "domain": "adhome.local",
+
+    "groups": [
+        {
+            "name": "Sales"
+        }
+    ],
+    "users": [
+        {
+            "name": "Matthew",
+            "surname": "Perry",
+            "password": "Qwerty123",
+            "groups": [
+                "Sales"
+            ]
+        }
+    ]
+}
