@@ -14,7 +14,7 @@ function CreateADUser(){
     $password = $userObject.password
 
     $firstname, $lastname = $name.Split(" ")
-    $usernme = ($firstname[0] + $lastname).ToLower()
+    $username = ($firstname[0] + $lastname).ToLower()
     $samAccountName = $username
     $principalname = $username
 
