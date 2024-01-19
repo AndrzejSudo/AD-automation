@@ -27,8 +27,8 @@ foreach ($groupOb in $groupsList) {
         #Write-Host "Group '$group' already exists"
     }
     catch [Microsoft.ActiveDirectory.Management.ADIdentityNotFoundException] {
-        New-ADGroup -Name $group -Path $ouGroupsPath -GroupScope global
-        Write-Host "Group '$group' created."
+        New-ADGroup -Name $group -Path $ouGroupsPath -GroupScope global -GroupCategory Security
+        Write-Host "Group '$group' created successfully."
     }
 }
 
