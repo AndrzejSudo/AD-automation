@@ -4,12 +4,12 @@ Import-Module ActiveDirectory
 # Define the path to the CSV file containing user details
 $csvUsers = "data\users.csv"
 $csvPasswords = "data\passwords.csv"
-$csvGroups = "data\groups.csv"
+#$csvGroups = "data\groups.csv"
 
-# Read the CSV file
+# Read the CSV files
 $usersList = Import-CSV $csvUsers
 $passwordsList = Import-CSV $csvPasswords
-$groupsList = Import-CSV $csvGroups
+#$groupsList = Import-CSV $csvGroups
 
 # Specify domain name
 $myDomain = "adhome"
@@ -19,7 +19,9 @@ $myDomainSuf = "local"
 $ouUsersPath = "CN=Users,DC=$myDomain,DC=$myDomainSuf"
 $ouGroupsPath = "OU=Groups,DC=$myDomain,DC=$myDomainSuf"
 
-# Create groups from CSV file
+# Create groups from additional script
+create_groups.ps1
+<#
 foreach ($groupOb in $groupsList) {
     $group = $groupOb.group
     try {
@@ -31,6 +33,7 @@ foreach ($groupOb in $groupsList) {
         Write-Host "Group '$group' created successfully."
     }
 }
+#>
 
 # Loop through each user in the CSV file
 foreach ($user in $usersList) {
