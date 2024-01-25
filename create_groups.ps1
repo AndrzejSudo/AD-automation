@@ -19,8 +19,8 @@ $ouGroupsPath = "OU=Groups,DC=$myDomain,DC=$myDomainSuf"
 foreach ($groupOb in $groupsList) {
     $group = $groupOb.group
     try {
-        Get-ADGroup -Identity $group
-        #Write-Host "Group '$group' already exists"
+        $name = (Get-ADGroup -Identity $group).name
+        Write-Host "Group '$name' already exists"
     }
     catch [Microsoft.ActiveDirectory.Management.ADIdentityNotFoundException] {
         New-ADGroup -Name $group -Path $ouGroupsPath -GroupScope global -GroupCategory Security
