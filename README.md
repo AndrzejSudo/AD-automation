@@ -8,7 +8,7 @@ So far I managed to:
 
 1. **Setup a Homelab:**
    - Create a virtual environment using VMware ESXi.
-   - Install Windows Server as a domain controller and configure Active Directory.
+   - Install Windows Server as a domain controller and configure Active Directory environment.
    - Add two Windows 10 Enterprise workstations to simulate small office environment.
 
 2. **Configure users and groups:**
